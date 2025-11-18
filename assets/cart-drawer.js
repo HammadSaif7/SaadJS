@@ -33,6 +33,8 @@ class CartDrawer extends HTMLElement {
     setTimeout(() => {
       this.classList.add('animate', 'active');
     });
+    
+    document.dispatchEvent(new CustomEvent("cart-drawer:opened"))
 
     this.addEventListener(
       'transitionend',
@@ -53,6 +55,8 @@ class CartDrawer extends HTMLElement {
     this.classList.remove('active');
     removeTrapFocus(this.activeElement);
     document.body.classList.remove('overflow-hidden');
+    
+    document.dispatchEvent(new CustomEvent("cart-drawer:closed"))
   }
 
   setSummaryAccessibility(cartDrawerNote) {
